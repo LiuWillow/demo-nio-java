@@ -18,10 +18,5 @@ public class NIOClient {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         socketChannel.read(buffer);
         System.out.println("服务端说：" + new String(buffer.array(), "utf-8"));
-        buffer.put("i'm lwl client".getBytes());
-        buffer.flip();
-        while (buffer.hasRemaining()) {
-            socketChannel.write(buffer);
-        }
     }
 }
