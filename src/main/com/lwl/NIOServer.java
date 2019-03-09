@@ -16,7 +16,7 @@ import java.util.Set;
  * @date 2019/2/1 14:36
  * @description 非阻塞IO
  */
-public class NIO {
+public class NIOServer {
     public static void main(String[] args) throws IOException {
         int port = 9384;
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();

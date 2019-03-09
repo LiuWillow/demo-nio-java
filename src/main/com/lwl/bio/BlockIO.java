@@ -1,4 +1,4 @@
-package main.com.lwl;
+package main.com.lwl.bio;
 
 import java.io.IOException;
 import java.io.InputStream;
