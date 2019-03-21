@@ -1,4 +1,4 @@
-package main.com.lwl;
+package main.java.com.lwl;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

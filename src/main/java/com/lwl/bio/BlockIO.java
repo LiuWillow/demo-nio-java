@@ -1,7 +1,6 @@
-package main.com.lwl.bio;
+package main.java.com.lwl.bio;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
