@@ -20,7 +20,7 @@ public class TestServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap()
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new TestServerIinitializer() );   //添加自定义的初始化器
+                    .childHandler(new TestServerInitializer() );   //添加自定义的初始化器
             ChannelFuture channelFuture = serverBootstrap.bind(9987).sync();
             channelFuture.channel().closeFuture().sync();
         }catch (Exception e){
