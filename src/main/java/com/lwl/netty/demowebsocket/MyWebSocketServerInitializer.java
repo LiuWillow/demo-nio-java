@@ -22,8 +22,8 @@ public class MyWebSocketServerInitializer extends ChannelInitializer<SocketChann
         pipeline.addLast(new ChunkedWriteHandler());
         //消息聚合处理器，把各个段聚合成完整的数据
         pipeline.addLast(new HttpObjectAggregator(8192));
-        //帮助完成websocket工作，websocket以frame为单位，地址表示websocket的地址，即localhost/ws
-        pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
+        //帮助完成websocket工作，websocket以frame为单位，地址表示websocket的地址，即ws/localhost/chat，ws表示协议名
+        pipeline.addLast(new WebSocketServerProtocolHandler("/chat"));
         pipeline.addLast(new TextWebSocketFrameHandler());
     }
 }
