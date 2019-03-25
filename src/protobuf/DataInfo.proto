@@ -4,8 +4,8 @@ syntax = "proto2";
 package com.lwl.protobuf;   //无论用什么语言都要定义这个
 
 option optimize_for = SPEED; //加快解析速度
-option java_package = "com.lwl.protobuf";  //生成的代码所在包名
-option java_outer_classname = "DataInfo";
+option java_package = "com.lwl.netty.protobuf";  //生成的代码所在包名
+option java_outer_classname = "MyDataInfo";
 
 message Student {
     required string name = 1;  //required表示必填
