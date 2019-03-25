@@ -27,7 +27,7 @@ public class BlockIO {
                 OutputStream outputStream;
                 try {
                     outputStream = clientSocket.getOutputStream();
-                    outputStream.write("hello".getBytes());
+                    outputStream.write("httphHello".getBytes());
                     outputStream.flush();
                     clientSocket.close();
                 } catch (IOException e) {
