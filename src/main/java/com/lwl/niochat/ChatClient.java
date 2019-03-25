@@ -1,4 +1,4 @@
-package com.lwl.demo;
+package com.lwl.niochat;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -15,7 +15,7 @@ import java.util.Set;
  * @date 2019/3/21 18:03
  * @description
  */
-public class Client {
+public class ChatClient {
     private Selector selector;
 
     private class ReadTask extends Thread {
@@ -68,7 +68,7 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        Client serverThread = new Client();
+        ChatClient serverThread = new ChatClient();
         serverThread.init();
     }
 }

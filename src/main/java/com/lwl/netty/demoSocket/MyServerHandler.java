@@ -16,7 +16,7 @@ public class MyServerHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.channel().writeAndFlush("hello Client");
+        ctx.channel().writeAndFlush("hello ChatClient");
     }
 
     /**
