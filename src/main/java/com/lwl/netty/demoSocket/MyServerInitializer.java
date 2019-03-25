@@ -2,7 +2,6 @@ package com.lwl.netty.demoSocket;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
-import io.netty.channel.socket.ServerSocketChannel;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
@@ -24,6 +23,6 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel>{
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         //上面都是加一些解码器啥的
-        pipeline.addLast(new MySocketHandler());
+        pipeline.addLast(new MyServerHandler());
     }
 }

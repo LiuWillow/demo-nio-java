@@ -15,9 +15,18 @@ public class MyClientHandler extends SimpleChannelInboundHandler<String> {
         channelHandlerContext.channel().writeAndFlush("from client：" + msg);
     }
 
+    /**
+     * 连接上的时候发消息
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.channel().writeAndFlush("hello Server");
+    }
+
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
-
     }
 }
