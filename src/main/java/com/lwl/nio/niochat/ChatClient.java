@@ -1,4 +1,4 @@
-package com.lwl.niochat;
+package com.lwl.nio.niochat;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
