@@ -1,0 +1,14 @@
+//执行protoc --java_out=src/main/java src/protobuf/DataInfo.proto可以在指定目录下生成文件，必须要下载proto编译器
+syntax = "proto2";
+
+package com.lwl.protobuf;   //无论用什么语言都要定义这个
+
+option optimize_for = SPEED; //加快解析速度
+option java_package = "com.lwl.protobuf";  //生成的代码所在包名
+option java_outer_classname = "DataInfo";
+
+message Student {
+    required string name = 1;  //required表示必填
+    optional int32 age = 2;   //optional表示选填
+    optional string address = 3;
+}
