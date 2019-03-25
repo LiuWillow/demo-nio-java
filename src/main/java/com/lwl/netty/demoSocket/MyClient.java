@@ -1,5 +1,6 @@
 package com.lwl.netty.demoSocket;
 
+import com.lwl.netty.demoidleevent.MyServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -17,7 +18,7 @@ public class MyClient {
             Bootstrap bootstrap = new Bootstrap();
             ChannelFuture channelFuture = bootstrap.group(eventExecutors).channel(NioSocketChannel.class)
                     .handler(new MyClientInitializer())
-                    .connect("localhost", 8899)
+                    .connect("localhost", MyServer.PORT)
                     .sync();
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
