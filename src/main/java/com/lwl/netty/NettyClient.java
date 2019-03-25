@@ -30,7 +30,7 @@ public class NettyClient {
         Channel channel = bootstrap.connect("127.0.0.1", 8000).channel();
 
         while (true) {
-            channel.writeAndFlush(new Date() + ": hello world!");
+            channel.writeAndFlush(new Date() + ": httphHello world!");
             Thread.sleep(2000);
         }
     }

@@ -1,4 +1,4 @@
-package com.lwl.netty.hello;
+package com.lwl.netty.httphHello;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
