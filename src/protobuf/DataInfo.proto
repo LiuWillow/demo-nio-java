@@ -7,8 +7,35 @@ option optimize_for = SPEED; //加快解析速度
 option java_package = "com.lwl.netty.protobuf";  //生成的代码所在包名
 option java_outer_classname = "MyDataInfo";
 
+message MyMessage{
+   //可以规避要传多个类型数据的情况
+    enum DataType{
+        STUDENT_TYPE = 1;
+        DOG_TYPE = 2;
+        CAT_TYPE = 3;
+    }
+    required DataType data_type = 1;
+
+   //只会保留一个，后一个覆盖i前一个
+    oneof dataBody {
+        Student student = 2;
+        Dog dog = 3;
+        Cat cat = 4;
+    }
+}
 message Student {
     required string name = 1;  //required表示必填
     optional int32 age = 2;   //optional表示选填
     optional string address = 3;
+}
+//长命名建议用下划线，转化成java的话会自动变成驼峰
+
+message Dog{
+    optional string name = 1;
+    optional int32 age = 2;
+}
+
+message Cat {
+    optional string name = 1;
+    optional string city = 2;
 }
