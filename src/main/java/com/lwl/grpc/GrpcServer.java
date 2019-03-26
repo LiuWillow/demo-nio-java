@@ -32,7 +32,8 @@ public class GrpcServer {
 
     private void awaitTermination() throws InterruptedException {
         if (null != this.server) {
-            this.server.awaitTermination(3000, TimeUnit.MILLISECONDS);
+//            this.server.awaitTermination(3000, TimeUnit.MILLISECONDS);
+            this.server.awaitTermination();
         }
     }
 
