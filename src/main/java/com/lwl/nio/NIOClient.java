@@ -14,7 +14,7 @@ import java.nio.channels.SocketChannel;
 public class NIOClient {
     public static void main(String[] args) throws IOException {
         SocketChannel socketChannel = SocketChannel.open();
-        socketChannel.connect(new InetSocketAddress("127.0.0.1", 9384));
+        socketChannel.connect(new InetSocketAddress("127.0.0.1", 9500));
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         socketChannel.read(buffer);
         System.out.println("客户端接收到服务端的数据： " + new String(buffer.array(), "utf-8"));
