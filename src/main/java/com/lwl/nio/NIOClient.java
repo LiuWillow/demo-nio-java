@@ -3,8 +3,12 @@ package com.lwl.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * @author lwl
@@ -13,16 +17,33 @@ import java.nio.channels.SocketChannel;
  */
 public class NIOClient {
     public static void main(String[] args) throws IOException {
-        SocketChannel socketChannel = SocketChannel.open();
-        socketChannel.connect(new InetSocketAddress("127.0.0.1", 9500));
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-        socketChannel.read(buffer);
-        System.out.println("客户端接收到服务端的数据： " + new String(buffer.array(), "utf-8"));
-        buffer.clear();
-        System.out.println("客户端开始写数据：haha");
-        buffer.put("haha".getBytes());
-        socketChannel.write(buffer);
-        System.out.println("客户端数据写完了");
-        socketChannel.close();
+        Selector selector = Selector.open();
+        SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9384));
+        socketChannel.configureBlocking(false);
+        socketChannel.register(selector, SelectionKey.OP_READ);
+
+        ByteBuffer buffer = ByteBuffer.allocate(20);
+        while (true) {
+            final int keysNum = selector.select();
+            if (keysNum == 0) {
+                continue;
+            }
+            final Set<SelectionKey> selectionKeys = selector.selectedKeys();
+            final Iterator<SelectionKey> iterator = selectionKeys.iterator();
+            if (iterator.hasNext()) {
+                final SelectionKey selectionKey = iterator.next();
+                iterator.remove();
+                if (selectionKey.isReadable()) {
+                    final SocketChannel channel = (SocketChannel) selectionKey.channel();
+                    channel.read(buffer);
+                    System.out.println("接受到服务端的消息：" + new String(buffer.array(), StandardCharsets.UTF_8));
+                    buffer.clear();
+                    buffer.put("收到啦哈哈哈".getBytes());
+                    buffer.flip();
+                    channel.write(buffer);
+                    selectionKey.cancel();
+                }
+            }
+        }
     }
 }
